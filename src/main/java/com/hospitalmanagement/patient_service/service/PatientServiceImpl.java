@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.hospitalmanagement.patient_service.entity.Patient;
+import com.hospitalmanagement.patient_service.exception.PatientNotFoundException;
 import com.hospitalmanagement.patient_service.repository.PatientRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,9 +38,11 @@ public class PatientServiceImpl implements PatientService{
 	}
 	
 	@Override
-	public Optional<Patient> getPatientById(String patientId) {
+	public Patient getPatientById(String patientId) {
 		log.info("Fetching patient with ID : {}", patientId);
-		Optional<Patient> patient = patientRepository.findById(patientId);
+		Patient patient = patientRepository.findById(patientId)
+				.orElseThrow(() -> new PatientNotFoundException(
+						"Patient not found with ID : " + patientId));
 		log.info("Successfully feteched patient with ID : {} from database", patientId);
 		return patient;
 	}

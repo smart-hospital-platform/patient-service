@@ -12,5 +12,5 @@ public interface PatientService {
 
 	Patient createPatient(Patient patient);
 	List<Patient> getAllPatients();
-	Optional<Patient> getPatientById(String patientId);
+	Patient getPatientById(String patientId);
 }

@@ -48,9 +48,9 @@ public class PatientController {
 	}
 	
 	@GetMapping("/{patientId}")
-	public Optional<Patient> getPatientById(@PathVariable String patientId) {
+	public Patient getPatientById(@PathVariable String patientId) {
 		log.info("Request received to get Patient details");
-		Optional<Patient> patient = patientService.getPatientById(patientId);
+		Patient patient = patientService.getPatientById(patientId);
 		log.info("Successfully feteched patient details");
 		return patient;
 	}
