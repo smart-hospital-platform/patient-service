@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hospitalmanagement.patient_service.entity.Patient;
 import com.hospitalmanagement.patient_service.service.PatientService;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -28,7 +30,8 @@ public class PatientController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Patient> createPatient(@RequestBody Patient patient) {
+	public ResponseEntity<Patient> createPatient(
+			@Valid @RequestBody Patient patient) {
 		
 		log.info("Create Patient API request is received");
 		Patient createdPatient = patientService.createPatient(patient);
