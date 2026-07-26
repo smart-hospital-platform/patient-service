@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hospitalmanagement.patient_service.entity.Patient;
 import com.hospitalmanagement.patient_service.service.PatientService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
+@Tag(name = "Patient Management",
+description = "Patient Service APIs")
 @RestController
 @RequestMapping("/patients")
 @Slf4j
