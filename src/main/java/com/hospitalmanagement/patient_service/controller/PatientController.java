@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hospitalmanagement.patient_service.dto.PatientDTO;
 import com.hospitalmanagement.patient_service.entity.Patient;
 import com.hospitalmanagement.patient_service.service.PatientService;
 
@@ -33,27 +34,27 @@ public class PatientController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Patient> createPatient(
-			@Valid @RequestBody Patient patient) {
+	public ResponseEntity<PatientDTO> createPatient(
+			@Valid @RequestBody PatientDTO patient) {
 		
 		log.info("Create Patient API request is received");
-		Patient createdPatient = patientService.createPatient(patient);
+		PatientDTO createdPatient = patientService.createPatient(patient);
 		log.info("Create Patient API completed successfully!");
 		return ResponseEntity.ok(createdPatient);
 	}
 	
 	@GetMapping("/getAllPatients")
-	public List<Patient> getAllPatients() {
+	public List<PatientDTO> getAllPatients() {
 		log.info("Get All Patients API request is received");
-		List<Patient> patients = patientService.getAllPatients();
+		List<PatientDTO> patients = patientService.getAllPatients();
 		log.info("Get All Patients API completed sucessfully. Total patients fetched : {}", patients.size());
 		return patients;
 	}
 	
 	@GetMapping("/{patientId}")
-	public Patient getPatientById(@PathVariable String patientId) {
+	public PatientDTO getPatientById(@PathVariable String patientId) {
 		log.info("Request received to get Patient details");
-		Patient patient = patientService.getPatientById(patientId);
+		PatientDTO patient = patientService.getPatientById(patientId);
 		log.info("Successfully feteched patient details");
 		return patient;
 	}

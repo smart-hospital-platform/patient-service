@@ -5,12 +5,13 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.hospitalmanagement.patient_service.entity.Patient;
+import com.hospitalmanagement.patient_service.dto.PatientDTO;
+
 
 
 public interface PatientService {
 
-	Patient createPatient(Patient patient);
-	List<Patient> getAllPatients();
-	Patient getPatientById(String patientId);
+	PatientDTO createPatient(PatientDTO patient);
+	List<PatientDTO> getAllPatients();
+	PatientDTO getPatientById(String patientId);
 }
