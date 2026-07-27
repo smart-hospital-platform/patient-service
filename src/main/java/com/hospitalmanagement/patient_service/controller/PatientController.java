@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hospitalmanagement.patient_service.dto.PatientDTO;
@@ -56,6 +57,13 @@ public class PatientController {
 		log.info("Request received to get Patient details");
 		PatientDTO patient = patientService.getPatientById(patientId);
 		log.info("Successfully feteched patient details");
+		return patient;
+	}
+	
+	@GetMapping("/search")
+	public List<PatientDTO> searchPatientByName(
+			@RequestParam String patientName){
+		List<PatientDTO> patient = patientService.searchPatientByName(patientName);
 		return patient;
 	}
 	

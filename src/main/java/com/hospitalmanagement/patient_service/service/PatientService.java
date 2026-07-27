@@ -14,4 +14,5 @@ public interface PatientService {
 	PatientDTO createPatient(PatientDTO patient);
 	List<PatientDTO> getAllPatients();
 	PatientDTO getPatientById(String patientId);
+	List<PatientDTO> searchPatientByName(String patientName);
 }

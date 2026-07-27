@@ -64,5 +64,16 @@ public class PatientServiceImpl implements PatientService{
 		
 		return PatientMapper.toPatientDTO(patient);
 	}
+	
+	public List<PatientDTO> searchPatientByName(String patientName) {
+		
+		log.info("Searching patient with name : {}", patientName);
+		
+		List<Patient> patient = patientRepository.findByPatientNameContainingIgnoreCase(patientName);
+		
+		return patient.stream()
+				.map(PatientMapper::toPatientDTO)
+				.toList();
+	}
 
 }
