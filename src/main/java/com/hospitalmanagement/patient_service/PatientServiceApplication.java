@@ -11,6 +11,7 @@ public class PatientServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PatientServiceApplication.class, args);
 
+
 		
 		/*Patient pat = new Patient();
 		System.out.println("Patient Name is : " + pat.getPatientName());*/
